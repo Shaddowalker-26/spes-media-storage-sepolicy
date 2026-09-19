@@ -1,0 +1,25 @@
+From abd4e41d038af46929a6c0fd492c806dbbcf9ef0 Mon Sep 17 00:00:00 2001
+From: cevente <cjgrenlund@gmail.com>
+Date: Thu, 30 Jul 2026 19:35:16 +0800
+Subject: [PATCH] Fix permission for checkin data file in vold_prepare_subdirs
+
+Change-Id: I7b2e1efdb7dbdc5c4a82152baf8a84eb2b031661
+---
+ private/vold_prepare_subdirs.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/private/vold_prepare_subdirs.te b/private/vold_prepare_subdirs.te
+index 6a9c3b6a5..b624f1493 100644
+--- a/private/vold_prepare_subdirs.te
++++ b/private/vold_prepare_subdirs.te
+@@ -17,6 +17,7 @@ allow vold_prepare_subdirs {
+   sdk_sandbox_system_data_file
+   system_data_file
+   vendor_data_file
++  checkin_data_file
+ }:dir { open read write add_name remove_name rmdir relabelfrom };
+ allow vold_prepare_subdirs {
+     apex_data_file_type
+-- 
+2.43.0
+

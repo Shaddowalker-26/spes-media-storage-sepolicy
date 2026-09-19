@@ -1,0 +1,25 @@
+From 75d8c14f91cb864e202003d8fd11ebc97f7add4c Mon Sep 17 00:00:00 2001
+From: Shaddowalker-26 <chosentuguchi@gmail.com>
+Date: Sat, 19 Sep 2026 22:06:06 +0000
+Subject: [PATCH] Add relabeling support for media storage
+
+Change-Id: Ib5e5b4b65c89e71bbf8ee6708159ac49a8939415
+---
+ private/vold_prepare_subdirs.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/private/vold_prepare_subdirs.te b/private/vold_prepare_subdirs.te
+index b624f1493..709bfcf0d 100644
+--- a/private/vold_prepare_subdirs.te
++++ b/private/vold_prepare_subdirs.te
+@@ -5,6 +5,7 @@ typeattribute vold_prepare_subdirs mlstrustedsubject;
+ 
+ allow vold_prepare_subdirs system_file:file execute_no_trans;
+ allow vold_prepare_subdirs shell_exec:file rx_file_perms;
++allow vold_prepare_subdirs media_rw_data_file:dir { relabelto relabelfrom };
+ allow vold_prepare_subdirs toolbox_exec:file rx_file_perms;
+ allow vold_prepare_subdirs devpts:chr_file rw_file_perms;
+ allow vold_prepare_subdirs vold:fd use;
+-- 
+2.43.0
+
